@@ -15,7 +15,9 @@ import BoardAdmin from "./components/board-admin.component";
 
 // import AuthVerify from "./common/auth-verify";
 import EventBus from "./common/EventBus";
-import Moderator from "./controller/Moderator";
+import AdminMain from "./controller/AdminMain";
+import CourseAll from "./controller/CourseAll";
+
 
 class App extends Component {
   constructor(props) {
@@ -82,13 +84,13 @@ class App extends Component {
               </li>
             )}
 
-            {showModeratorBoard && (
+            {/* {showModeratorBoard && (
               <li className="nav-item">
                 <Link to={"/moddata"} className="nav-link">
                   Moderator Data
                 </Link>
               </li>
-            )}
+            )} */}
 
 
             {showAdminBoard && (
@@ -98,6 +100,14 @@ class App extends Component {
                 </Link>
               </li>
             )}
+
+            {/* {showAdminBoard && (
+              <li className="nav-item">
+                <Link to={"/admindata"} className="nav-link">
+                  Admin Data
+                </Link>
+              </li>
+            )} */}
 
             {currentUser && (
               <li className="nav-item">
@@ -140,14 +150,16 @@ class App extends Component {
 
         <div className="container mt-3">
           <Switch>
-            <Route exact path={["/", "/home"]} component={Moderator} />
+            <Route exact path={["/", "/home"]} component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
             <Route path="/user" component={BoardUser} />
             <Route path="/mod" component={BoardModerator} />
-            <Route path="/moddata" component={Moderator} />
+            {/* <Route path="/moddata" component={ModeratorJava} /> */}
             <Route path="/admin" component={BoardAdmin} />
+            <Route path="/admincourse" component={CourseAll} />
+            <Route path="/admindata" component={AdminMain} />
           </Switch>
         </div>
 
