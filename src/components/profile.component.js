@@ -63,7 +63,7 @@ export default class Profile extends Component {
             
         </div>
       {/* </div> */}
-       <div className="container">
+       {/* <div className="container">
          {(this.state.userReady) ?
         <div>
         <header className="jumbotron">
@@ -90,7 +90,7 @@ export default class Profile extends Component {
             currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
         </ul>
       </div>: null}
-      </div>
+      </div> */}
       </div>
     );
   }
