@@ -28,8 +28,43 @@ export default class Profile extends Component {
     const { currentUser } = this.state;
 
     return (
-      <div className="container">
-        {(this.state.userReady) ?
+      <div className="col-md-12">
+        <div className="card card-container">
+        <header>
+          <h3 align="Center" >
+            <strong>{currentUser.username}</strong> Profile
+          </h3>
+        </header>
+          <img
+            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            alt="profile-img"
+            className="profile-img-card"
+          />
+
+          
+            <div className="form-group">
+              <label htmlFor="username">Username: {currentUser.username}</label>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="password">Email:  {currentUser.email}</label>
+              
+            </div>
+            
+
+            {/* {this.state.message && (
+              <div className="form-group">
+                <div className="alert alert-danger" role="alert">
+                  {this.state.message}
+                </div>
+              </div>
+            )} */}
+            
+            
+        </div>
+      {/* </div> */}
+       <div className="container">
+         {(this.state.userReady) ?
         <div>
         <header className="jumbotron">
           <h3>
@@ -55,6 +90,7 @@ export default class Profile extends Component {
             currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
         </ul>
       </div>: null}
+      </div>
       </div>
     );
   }

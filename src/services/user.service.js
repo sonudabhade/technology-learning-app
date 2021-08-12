@@ -21,6 +21,36 @@ class UserService {
   getAdminBoard() {
     return axios.get(API_URL + 'admin', { headers: authHeader() });
   }
+
+
+
+  getUsers(){
+    return axios.get(API_URL + 'getallmoderator', { headers: authHeader() });
+}
+
+  getCourses(){
+    return axios.get(API_URL + 'getallcourses', { headers: authHeader() });
+
+}
+
+// deleteCourse(course,cid){
+//   console.log("delete job ")
+//   return(
+//       axios.delete(API_URL + 'deletecourse/${cid}',course, { headers: authHeader() })
+//   );
+  
+// }
+
+// deleteCourse(){
+//     return axios.get(API_URL + 'deletecourse/{cid}', { headers: authHeader() });
+
+// }
+
+// updateUser(){
+//     return axios.get(API_URL + 'updatemoderator', { headers: authHeader() });
+
+// }
+
 }
 
 export default new UserService();

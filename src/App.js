@@ -17,6 +17,8 @@ import BoardAdmin from "./components/board-admin.component";
 import EventBus from "./common/EventBus";
 import AdminMain from "./controller/AdminMain";
 import CourseAll from "./controller/CourseAll";
+import DeleteCourse from "./controller/deleteCourse";
+// import userUpdate from "./controller/userUpdate";
 
 
 class App extends Component {
@@ -160,6 +162,8 @@ class App extends Component {
             <Route path="/admin" component={BoardAdmin} />
             <Route path="/admincourse" component={CourseAll} />
             <Route path="/admindata" component={AdminMain} />
+            <Route path="/deletecourse/:cid" component={DeleteCourse}></Route>
+            {/* <Route path="/userupdate" component={userUpdate} /> */}
           </Switch>
         </div>
 

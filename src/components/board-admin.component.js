@@ -59,9 +59,9 @@ getCourse(){
   })
 }
 
-// Customers(){
+// getUpdate(){
 //   history.push({
-//       pathname : `/customerActivities/`,
+//       pathname : `/userupdate`,
 //   })
 // }
 
@@ -89,9 +89,9 @@ getCourse(){
 
                     {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button style={{marginLeft: "10px", padding :"10px"}} className="btn btn-info"
-                                onClick = {() => this.Customers().bind(this)}>
+                                onClick = {() => this.getUpdate().bind(this)}>
                     Customer Activities
-                    </button> */}
+                    </button>  */}
                   
             </div>
       </div>
