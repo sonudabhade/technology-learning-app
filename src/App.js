@@ -18,6 +18,8 @@ import EventBus from "./common/EventBus";
 import AdminMain from "./controller/AdminMain";
 import CourseAll from "./controller/CourseAll";
 import DeleteCourse from "./controller/deleteCourse";
+import Updatecourse from "./controller/updateCourse";
+import PostCourse from "./controller/postCourse";
 // import userUpdate from "./controller/userUpdate";
 
 
@@ -35,6 +37,8 @@ class App extends Component {
 
   componentDidMount() {
     const user = AuthService.getCurrentUser();
+
+    
 
     if (user) {
       this.setState({
@@ -162,6 +166,8 @@ class App extends Component {
             <Route path="/admin" component={BoardAdmin} />
             <Route path="/admincourse" component={CourseAll} />
             <Route path="/admindata" component={AdminMain} />
+            <Route path="/postcourse" component={PostCourse}></Route>
+            <Route path="/updatecourse/:cid" component={Updatecourse}></Route>
             <Route path="/deletecourse/:cid" component={DeleteCourse}></Route>
             {/* <Route path="/userupdate" component={userUpdate} /> */}
           </Switch>

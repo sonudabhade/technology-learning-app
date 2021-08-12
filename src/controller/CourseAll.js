@@ -3,7 +3,7 @@ import React from 'react';
 import authHeader from '../services/auth-header';
 import courseservice from '../services/courseservice';
 
-class AdminMain extends React.Component {
+class CourseAll extends React.Component {
     
     constructor(props){
         super(props)
@@ -11,8 +11,8 @@ class AdminMain extends React.Component {
             course:[]
             
         }
-        // this.postjob=this.postjob.bind(this);
-        // this.editjob=this.editjob.bind(this);
+        this.postCourse=this.postCourse.bind(this);
+        this.updateCourse=this.updateCourse.bind(this);
         this.deletecourse=this.deletecourse.bind(this);
     }
 
@@ -24,12 +24,12 @@ class AdminMain extends React.Component {
 
     }
 
-    // postCourse(){
-    //     this.props.history.push('/postcourse');
-    // }
-    // editjob(jobId){
-    //     this.props.history.push(`/updatecourse/${cid}`);
-    // }
+    postCourse(){
+        this.props.history.push('/postcourse');
+    }
+    updateCourse(cid){
+        this.props.history.push(`/updatecourse/${cid}`, { headers: authHeader() });
+    }
     deletecourse(cid){
         this.props.history.push(`/deletecourse/${cid}`, { headers: authHeader() });
     }
@@ -40,12 +40,14 @@ class AdminMain extends React.Component {
             
                 <div>
                 <h1 className = "text-center"> Course List</h1>
+                <button className="btn btn-primary" onClick={this.postCourse}>Post Job</button>
                 <table className = "table table-striped">
                     <thead>
                         <tr>
 
                             <td>Course Id</td>
                             <td>Course Name</td>
+                            <td>Course_Details</td>
                             <td>Course Fee</td>
                             {/* <td>Employer Contact</td>
                             <td>Email</td> */}
@@ -59,16 +61,17 @@ class AdminMain extends React.Component {
                                 course => 
                                 <tr key = {course.cid}>
                                      <td> {course.cid}</td>   
-                                     <td> {course.cname}</td>   
+                                     <td> {course.cname}</td> 
+                                     <td> {course.courseDetails}</td>   
                                      <td> {course.cfee}</td>   
-                                     {/* <td> {user.empContact}</td> 
-                                     <td> {user.empEmail}</td>  */}
+                                     
+                                     {/*<td> {user.empEmail}</td>  */}
                                      {/* <td> {user.roles}</td>    */}
 
                                      <td>
 
                                    <button className="btn btn-info" 
-                                   //onClick = {() => onEdit(course)}
+                                   onClick = {() => this.updateCourse(course.cid)}
                                    >
                                           Update 
                                    </button>
@@ -95,7 +98,7 @@ class AdminMain extends React.Component {
     }
 }
 
-export default AdminMain
+export default CourseAll
 
 
 

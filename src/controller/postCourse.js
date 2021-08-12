@@ -1,18 +1,14 @@
 import React, { PureComponent } from 'react'
-import '../App.css';
 import courseservice from '../services/courseservice';
 
-class Updatecourse extends PureComponent {
+class PostCourse extends PureComponent {
     constructor(props) {
         super(props)
 
         this.state = {
-            cid: this.props.match.params.cid,
             cname: '',
-            cfee: 0,
-            courseDetails:''
-
-            // jobExp: '',
+            course_details:'',
+            cfee: 0
             // jobSal: '',
             // jobLocation:'',
             // jobNoticePeriod:'',
@@ -20,8 +16,9 @@ class Updatecourse extends PureComponent {
 
         }
         this.changeCourseNameHandler = this.changeCourseNameHandler.bind(this);
-        this.changeCourseFeeHandler = this.changeCourseFeeHandler.bind(this);
         this.changeCourseDetailsHandler =this.changeCourseDetailsHandler.bind(this);
+        this.changeCourseFeeHandler = this.changeCourseFeeHandler.bind(this);
+        
         // this.changejobSalHandler =this.changejobSalHandler.bind(this);
 
         // this.changejobLocationHandler =this.changejobLocationHandler.bind(this);
@@ -29,32 +26,20 @@ class Updatecourse extends PureComponent {
         // this.changejobSkillSetHandler =this.changejobSkillSetHandler.bind(this);
        
 
-        this.UpdateCourse = this.UpdateCourse.bind(this);
+        this.saveCourse = this.saveCourse.bind(this);
 
     }
-    
-    componentDidMount(){
-        courseservice.getCourseByCid(this.state.cid).then((res) => {
-            // take data from response using res
-            let course = res.data;
-            this.setState({ cname: course.cname, cfee: course.cfee, courseDetails: course.courseDetails });
-        });
-    }
-    UpdateCourse = e => {
+    saveCourse = e => {
+        e.preventDefault();
+        // let course = res.data;
 
-        e.preventDefault();//preventDefault is called on the event when submitting the form to prevent a browser reload/refresh. 
-      
-        let course = { cname: this.state.cname, cfee: this.state.cfee, courseDetails: this.state.courseDetails };
-
+        let course = { cname: this.state.cname, cfee: this.state.cfee, course_details: this.state.course_details };
 
         console.log('course =>' + JSON.stringify(course));
 
-        courseservice.updateCourse(course,this.state.cid).then((res)=>{
-         this.props.history.push("/admincourse");
-         console.log("successfully completed");
+        courseservice.postCourse(course,this.state.cid).then((res)=>{
+            this.props.history.push('/admincourse')
         });
-
-        
     }
     cancel() {
         this.props.history.push('/admincourse');
@@ -62,12 +47,14 @@ class Updatecourse extends PureComponent {
     changeCourseNameHandler = (event) => {
         this.setState({ cname: event.target.value });
     }
+
+    changeCourseDetailsHandler = (event) => {
+        this.setState({ course_details: event.target.value });
+    }
     changeCourseFeeHandler = (event) => {
         this.setState({ cfee: event.target.value });
     }
-    changeCourseDetailsHandler = (event) => {
-        this.setState({ courseDetails: event.target.value });
-    }
+    
     // changejobSalHandler = (event) => {
     //     this.setState({ jobSal: event.target.value });
     // }
@@ -90,23 +77,23 @@ class Updatecourse extends PureComponent {
             <div>
                 <div className="container">
                     <div className="row">
-                        <div className=" center card " >
-                            <h3 className="text-center">Update Course</h3>
+                        <div className="card col-md-6 offset-md-3">
+                            <h3 className="text-center">Post a Job</h3>
                             <div className="card-body">
                                 <form>
-                                    <div className="form-group">
+                                <div className="form-group">
                                         <label>Course Name</label>
-                                        <input placeholder="course fee" className="form-control" name="cname"
+                                        <input placeholder="Job title" className="form-control" name="jobTitle"
                                             value={this.state.cname} onChange={this.changeCourseNameHandler} />
                                     </div>
                                     <div className="form-group">
                                         <label>Course Details</label>
-                                        <input placeholder="Course Details" className="form-control" name="courseDetails"
-                                            value={this.state.courseDetails} onChange={this.changeCourseDetailsHandler} />
+                                        <textarea placeholder="Job desc" className="form-control" name="jobDesc"
+                                            value={this.state.course_details} onChange={this.changeCourseDetailsHandler} />
                                     </div>
                                     <div className="form-group">
                                         <label>Course Fee</label>
-                                        <input placeholder="course fee" className="form-control" name="cfee"
+                                        <input placeholder="Job Exp" className="form-control" name="jobExp"
                                             value={this.state.cfee} onChange={this.changeCourseFeeHandler} />
                                     </div>
                                     {/* <div className="form-group">
@@ -129,7 +116,7 @@ class Updatecourse extends PureComponent {
                                         <input placeholder="Skills" className="form-control" name="jobSkillSet"
                                             value={this.state.jobSkillSet} onChange={this.changejobSkillSetHandler} />
                                     </div> */}
-                                    <button className="btn btn-success" onClick={this.UpdateCourse}>Save</button>
+                                    <button className="btn btn-success" onClick={this.saveCourse}>Save</button>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
                                 </form>
                             </div>
@@ -140,5 +127,4 @@ class Updatecourse extends PureComponent {
         )
     }
 }
-
-export default Updatecourse
+export default PostCourse

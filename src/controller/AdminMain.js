@@ -2,7 +2,7 @@
 import React from 'react';
 import UserService from '../services/user.service';
 import EventBus from "../common/EventBus";
-import { history } from '../index'
+//import { history } from '../index'
 
 class AdminMain extends React.Component {
 

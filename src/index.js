@@ -7,6 +7,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 export const history = createBrowserHistory({forceRefresh: true});
+
 ReactDOM.render(
   <BrowserRouter>
     <App />
