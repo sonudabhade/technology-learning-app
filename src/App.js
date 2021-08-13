@@ -20,6 +20,9 @@ import CourseAll from "./controller/CourseAll";
 import DeleteCourse from "./controller/deleteCourse";
 import Updatecourse from "./controller/updateCourse";
 import PostCourse from "./controller/postCourse";
+import TraineeAll from "./controller/TraineeAllMod";
+import UpdateTrainee from "./controller/updateTraineeMod";
+import TraineeAllAdmin from "./controller/TraineeAllAdmin";
 // import userUpdate from "./controller/userUpdate";
 
 
@@ -164,12 +167,14 @@ class App extends Component {
             <Route path="/mod" component={BoardModerator} />
             {/* <Route path="/moddata" component={ModeratorJava} /> */}
             <Route path="/admin" component={BoardAdmin} />
-            <Route path="/admincourse" component={CourseAll} />
+            <Route path="/getallcourse" component={CourseAll} />
+            <Route path="/getalltrainee" component={TraineeAll} />
+            <Route path="/getalltraineeadmin" component={TraineeAllAdmin} />
             <Route path="/admindata" component={AdminMain} />
             <Route path="/postcourse" component={PostCourse}></Route>
             <Route path="/updatecourse/:cid" component={Updatecourse}></Route>
             <Route path="/deletecourse/:cid" component={DeleteCourse}></Route>
-            {/* <Route path="/userupdate" component={userUpdate} /> */}
+            <Route path="/updatetraineemod/:tid" component={UpdateTrainee} /> 
           </Switch>
         </div>
 

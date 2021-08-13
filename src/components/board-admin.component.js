@@ -55,7 +55,13 @@ export default class BoardAdmin extends Component {
 
 getCourse(){
   history.push({
-      pathname : `/admincourse`,
+      pathname : `/getallcourse`,
+  })
+}
+
+getAllTrainee(){
+  history.push({
+    pathname : `/getalltraineeadmin`,
   })
 }
 
@@ -87,11 +93,11 @@ getCourse(){
                     Get Course List
                     </button>
 
-                    {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button style={{marginLeft: "10px", padding :"10px"}} className="btn btn-info"
-                                onClick = {() => this.getUpdate().bind(this)}>
-                    Customer Activities
-                    </button>  */}
+                                onClick = {() => this.getAllTrainee().bind(this)}>
+                    Show All Trainee
+                    </button>
                   
             </div>
       </div>

@@ -38,7 +38,7 @@ export default class BoardModerator extends Component {
     );
   }
 
-  getUser(){
+getUser(){
     history.push({
         pathname : `/admindata`,
     })
@@ -46,15 +46,15 @@ export default class BoardModerator extends Component {
 
 getCourse(){
   history.push({
-      pathname : `/admincourse`,
+      pathname : `/getallcourse`,
   })
 }
 
-// getUpdate(){
-//   history.push({
-//       pathname : `/userupdate`,
-//   })
-// }
+getAllTrainee(){
+  history.push({
+      pathname : `getalltrainee`,
+  })
+}
 
 
 
@@ -78,11 +78,11 @@ getCourse(){
                     Get Course List
                     </button>
 
-                    {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button style={{marginLeft: "10px", padding :"10px"}} className="btn btn-info"
-                                onClick = {() => this.getUpdate().bind(this)}>
-                    Customer Activities
-                    </button>  */}
+                                onClick = {() => this.getAllTrainee().bind(this)}>
+                    Show All Trainee
+                    </button> 
                   
             </div>
       </div>

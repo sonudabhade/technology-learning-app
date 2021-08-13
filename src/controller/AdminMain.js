@@ -56,10 +56,10 @@ class AdminMain extends React.Component {
       
         return (
             <div className="container">
-            <header className="jumbotron">
+            {/* <header className="jumbotron">
               <h3>{this.state.content} </h3>
               
-            </header>
+            </header> */}
                 <h1 className = "text-center"> Users List</h1>
                 <table className = "table table-striped">
                     <thead>

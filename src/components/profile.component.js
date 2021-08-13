@@ -28,8 +28,8 @@ export default class Profile extends Component {
     const { currentUser } = this.state;
 
     return (
-      <div className="col-md-12">
-        <div className="card card-container">
+      <div className="col-md-12"  >
+        <div className="card card-container " style= {{backgroundColor: "#c2d1f0"}}>
         <header>
           <h3 align="Center" >
             <strong>{currentUser.username}</strong> Profile

@@ -36,14 +36,14 @@ class DeleteCourse extends PureComponent {
     console.log('course =>' + JSON.stringify(course));
 
     courseservice.deleteCourse(course, this.state.cid).then((res) => {
-      this.props.history.push("/admincourse");
+      this.props.history.push("/getallcourse");
       console.log("successfully completed");
     });
 
 
   }
   cancel() {
-    this.props.history.push('/admincourse');
+    this.props.history.push('/getallcourse');
   }
 
 
