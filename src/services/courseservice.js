@@ -1,10 +1,10 @@
 import axios from'axios';
 import authHeader from './auth-header';
 const course_base_url="/api/test/getallcourses";
-const base_url_search="http://localhost:8082/api/test/coursebyid";
+const base_url_search="/api/test/coursebyid";
 //const base_url="http://localhost:8082/api/test/coursecreate";
-const base_url_edit="http://localhost:8082/api/test/updatecourse";
-const base_url_delete="http://localhost:8082/api/test/deletecourse"
+const base_url_edit="/api/test/updatecourse";
+const base_url_delete="/api/test/deletecourse"
 
 class courseservice{
 getCourses (){

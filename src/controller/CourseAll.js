@@ -40,7 +40,7 @@ class CourseAll extends React.Component {
             
                 <div>
                 <h1 className = "text-center"> Course List</h1>
-                <button className="btn btn-primary" onClick={this.postCourse}>Post Job</button>
+                <button style={{align : "center"}}  className="btn btn-primary" onClick={this.postCourse}>Post Job</button>
                 <table className = "table table-striped">
                     <thead>
                         <tr>

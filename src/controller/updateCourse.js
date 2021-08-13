@@ -8,10 +8,14 @@ class Updatecourse extends PureComponent {
 
         this.state = {
             cid: this.props.match.params.cid,
-            cname: '',
+            cname: 'C',
             cfee: 0,
-            courseDetails:''
+            courseDetails: ''
 
+
+            
+
+   
             // jobExp: '',
             // jobSal: '',
             // jobLocation:'',
@@ -20,41 +24,45 @@ class Updatecourse extends PureComponent {
 
         }
         this.changeCourseNameHandler = this.changeCourseNameHandler.bind(this);
+        
         this.changeCourseFeeHandler = this.changeCourseFeeHandler.bind(this);
-        this.changeCourseDetailsHandler =this.changeCourseDetailsHandler.bind(this);
+        this.changeCourseDetailsHandler = this.changeCourseDetailsHandler.bind(this);
         // this.changejobSalHandler =this.changejobSalHandler.bind(this);
 
         // this.changejobLocationHandler =this.changejobLocationHandler.bind(this);
         // this.changejobNoticePeriodHandler =this.changejobNoticePeriodHandler.bind(this);
         // this.changejobSkillSetHandler =this.changejobSkillSetHandler.bind(this);
-       
+
 
         this.UpdateCourse = this.UpdateCourse.bind(this);
 
     }
-    
-    componentDidMount(){
+
+    componentDidMount() {
         courseservice.getCourseByCid(this.state.cid).then((res) => {
             // take data from response using res
             let course = res.data;
             this.setState({ cname: course.cname, cfee: course.cfee, courseDetails: course.courseDetails });
-        });
+        })
+            .catch(err => console.log(err))
     }
     UpdateCourse = e => {
 
         e.preventDefault();//preventDefault is called on the event when submitting the form to prevent a browser reload/refresh. 
-      
+
+
         let course = { cname: this.state.cname, cfee: this.state.cfee, courseDetails: this.state.courseDetails };
 
 
         console.log('course =>' + JSON.stringify(course));
 
-        courseservice.updateCourse(course,this.state.cid).then((res)=>{
-         this.props.history.push("/admincourse");
-         console.log("successfully completed");
+        courseservice.updateCourse(course, this.state.cid).then((res) => {
+            this.props.history.push("/admincourse");
+            e.persist();
+            console.log("successfully completed");
         });
 
-        
+
     }
     cancel() {
         this.props.history.push('/admincourse');
@@ -90,20 +98,37 @@ class Updatecourse extends PureComponent {
             <div>
                 <div className="container">
                     <div className="row">
-                        <div className=" center card " >
+                        <div className=" center card " style ={{width: "40rem"}} >
                             <h3 className="text-center">Update Course</h3>
                             <div className="card-body">
                                 <form>
                                     <div className="form-group">
-                                        <label>Course Name</label>
-                                        <input placeholder="course fee" className="form-control" name="cname"
-                                            value={this.state.cname} onChange={this.changeCourseNameHandler} />
+                                    
+                                        <label>Course Name:  &nbsp;&nbsp;&nbsp;&nbsp;
+                                            {/* <input placeholder="course fee" className="form-control" name="cname"
+                                            value={this.state.cname} onChange={this.changeCourseNameHandler} /> */}
+                                          
+                                            <select value={this.state.value} onChange={this.changeCourseNameHandler} style ={{width: "400px"}}>
+                                                <option value="C">C</option>
+                                                <option value="C++">C++</option>
+                                                <option value="Java">Java</option>
+                                                <option value="Python">Python</option>
+                                            </select>
+                                        </label>
                                     </div>
-                                    <div className="form-group">
+
+
+                                    <div className="form-group row" >
+                                        <div className="col-sm-2">
                                         <label>Course Details</label>
+                                        </div>
+                                        <div className="col-sm-8" style ={{marginLeft: "-30px"}}>
                                         <input placeholder="Course Details" className="form-control" name="courseDetails"
                                             value={this.state.courseDetails} onChange={this.changeCourseDetailsHandler} />
+                                        </div>
                                     </div>
+
+
                                     <div className="form-group">
                                         <label>Course Fee</label>
                                         <input placeholder="course fee" className="form-control" name="cfee"
