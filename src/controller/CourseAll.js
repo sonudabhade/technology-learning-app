@@ -18,6 +18,7 @@ class CourseAll extends React.Component {
         this.postCourse=this.postCourse.bind(this);
         this.updateCourse=this.updateCourse.bind(this);
         this.deletecourse=this.deletecourse.bind(this);
+        
     }
 
     componentDidMount(){
@@ -37,6 +38,7 @@ class CourseAll extends React.Component {
     deletecourse(cid){
         this.props.history.push(`/deletecourse/${cid}`, { headers: authHeader() });
     }
+    
    
     render (){
         
@@ -52,14 +54,15 @@ class CourseAll extends React.Component {
                 <br></br>
                 <br></br>
                 </center>
-                <table className = "table table-striped">
+                <table className="table table-striped table-bordered table-hover ">
                     <thead>
                         <tr color="danger">
 
-                            <td>Course Id</td>
-                            <td>Course Name</td>
-                            <td>Course_Details</td>
-                            <td>Course Fee</td>
+                            <th>Course Id</th>
+                            <th>Course Name</th>
+                            <th>Course Details</th>
+                            <th>Course Fee</th>
+                            <th>Action</th>
                             {/* <td>Employer Contact</td>
                             <td>Email</td> */}
                             {/* <td>Role</td> */}
@@ -86,18 +89,13 @@ class CourseAll extends React.Component {
                                    >
                                           Update 
                                    </Button>
-
-                                   <Tooltip title="Delete">
-                                           <IconButton aria-label="delete">
-                                               <DeleteIcon  color="secondary"
+                                    <br></br>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                   <Button  variant="contained" size="medium" color="primary" 
                                                onClick={()=>this.deletecourse(course.cid)}>
                                                 Delete 
-                                              </DeleteIcon>
-                                        </IconButton>
-                                   </Tooltip>
+                                                </Button>      
             
-    
-                                  </td>
+                                   </td>
                                 </tr>
                             )
                         }

@@ -2,12 +2,8 @@
 import React from 'react';
 import authHeader from '../services/auth-header';
 import traineeservice from '../services/traineeservice';
-//import traineeservice from '../services/traineeservice';
-//import { makeStyles } from '@material-ui/core/styles';
-import DeleteIcon from '@material-ui/icons/Delete';
-import IconButton from '@material-ui/core/IconButton';
-import Tooltip from '@material-ui/core/Tooltip';
 
+import Button from '@material-ui/core/Button';
 
 class TraineeAllAdmin extends React.Component {
     
@@ -20,6 +16,7 @@ class TraineeAllAdmin extends React.Component {
         // this.postCourse=this.postCourse.bind(this);
         // this.updateCourse=this.updateCourse.bind(this);
         // this.deletecourse=this.deletecourse.bind(this);
+      //  this.applicants=this.applicants.bind(this);
     }
 
     componentDidMount(){
@@ -40,6 +37,8 @@ class TraineeAllAdmin extends React.Component {
     deleteTrainee(tid){
         this.props.history.push(`/deletetrainee/${tid}`, { headers: authHeader() });
     }
+
+    
    
     render (){
         return (
@@ -47,17 +46,19 @@ class TraineeAllAdmin extends React.Component {
                 <div>
                 <h1 className = "text-center"> All Trainee</h1>
                 {/* <button style={{align : "center"}}  className="btn btn-primary" onClick={this.postCourse}>Post Job</button> */}
-                <table className = "table table-striped">
+                <table className="table table-striped table-bordered table-hover ">
                     <thead>
                         <tr>
 
-                            <td>Trainee Id</td>
-                            <td>Trainee FirstName</td>
-                            <td>Trainee LastName</td>
-                            <td>Trainee PhoneNo</td>
-                            <td>Trainee Qualification</td>
-                            <td>Country</td>
-                            <td>Status</td>
+                        <th>Trainee Id</th>
+                            <th>Trainee FirstName</th>
+                            <th>Trainee LastName</th>
+                            <th>Trainee PhoneNo</th>
+                            <th>Trainee Qualification</th>
+                            <th>Country</th>
+                            <th>Status</th>
+                            <th>user id</th>
+                            <th>Action</th>
                             
                         </tr>
 
@@ -76,24 +77,17 @@ class TraineeAllAdmin extends React.Component {
                                      <td> {trainee.qualification}</td>   
                                      <td> {trainee.country}</td> 
                                      <td> {trainee.status}</td> 
+                                     <td> {trainee.user.id}</td> 
                                      <td>
 
-                                    {/* <button className="btn btn-info" 
-                                   onClick = {() => this.updateTainee(trainee.tid)}
-                                   >
-                                          Update 
-                                   </button> */}
-                                   <Tooltip title="Delete">
-                                           <IconButton aria-label="delete">
-                                            
-                                               <DeleteIcon  color="secondary"
-                                               onClick={()=>this.deleteTrainee(trainee.tid)}/>
+                                     
+
+                                               <Button  variant="contained" size="medium" color="primary"
+                                    onClick={()=>this.deleteTrainee(trainee.tid)}
+                                  >
+                                          Delete
+                                   </Button>
                                            
-                                            </IconButton>
-                                   </Tooltip>
-                                   
-            
-    
                                   </td>
                                 </tr>
                             )

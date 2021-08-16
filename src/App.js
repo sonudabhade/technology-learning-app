@@ -26,12 +26,25 @@ import UpdateTrainee from "./controller/updateTraineeMod";
 import TraineeAllAdmin from "./controller/TraineeAllAdmin";
 import DeleteTrainee from "./controller/deleteTrainee";
 import createTrainee from "./controller/createTrainee";
-import CourseCard from "./controller/CourseCard";
-import CourseHome from "./controller/CourseHome";
+// import CourseCard from "./controller/CourseCard";
+// import CourseHome from "./controller/CourseHome";
 import ABOUT from "./components/pages/About";
 import CONTACT from "./components/pages/Contact";
 import CardFinal from "./controller/CardFinal";
+import CardView from "./controller/CardView";
 // import userUpdate from "./controller/userUpdate";
+
+import Course3 from "./components/courses/Course3";
+import Course1 from "./components/courses/Course1";
+import Course2 from "./components/courses/Course2";
+import Course4 from "./components/courses/Course4";
+import Course5 from "./components/courses/Course5";
+import Course6 from "./components/courses/Course6";
+import Course7 from "./components/courses/Course7";
+import Course8 from "./components/courses/Course8";
+import Course9 from "./components/courses/Course9";
+import Course10 from "./components/courses/Course10";
+import CourseSearch from "./controller/CourseSearch";
 
 
 class App extends Component {
@@ -94,11 +107,7 @@ class App extends Component {
               </Link>
             </li>
 
-            <li className="nav-item">
-                <Link to={"/allcourses"} className="nav-link">
-                  All Courses
-                </Link>
-              </li>
+            
 
             {showModeratorBoard && (
               <li className="nav-item">
@@ -156,6 +165,17 @@ class App extends Component {
                   {currentUser.username}
                 </Link>
               </li>
+
+              <li className="nav-item">
+                <Link to={"/allcourses"} className="nav-link">
+                  All Courses
+                </Link>
+              </li>
+              <li className="nav-item">
+              <Link to={"/searchcourse"} className="nav-link">
+                Search Course
+              </Link>
+            </li>
               <li className="nav-item">
                 <a href="/login" className="nav-link" onClick={this.logOut}>
                   LogOut
@@ -200,12 +220,21 @@ class App extends Component {
             <Route path="/deletetrainee/:tid" component={DeleteTrainee}></Route>
             <Route path="/updatetraineemod/:tid" component={UpdateTrainee} /> 
 
-            <Route path="/viewcourse/:cid" component={CourseHome} /> 
-
-            <Route exact path="/allcourses" component={CardFinal} />
+            <Route exact path="/allcourses" component={CardView} />
             <Route exact path="/aboutus" component={ABOUT} />
             <Route exact path="/contact" component={CONTACT} />
 
+            <Route exact path="/viewcourse/403" component={Course3} />
+            <Route exact path="/viewcourse/401" component={Course1} />
+            <Route exact path="/viewcourse/402" component={Course2} />
+            <Route exact path="/viewcourse/404" component={Course4} />
+            <Route exact path="/viewcourse/405" component={Course5} />
+            <Route exact path="/viewcourse/406" component={Course6} />
+            <Route exact path="/viewcourse/407" component={Course7} />
+            <Route exact path="/viewcourse/408" component={Course8} />
+            <Route exact path="/viewcourse/409" component={Course9} />
+            <Route exact path="/viewcourse/410" component={Course10} />
+            <Route exact path="/searchcourse" component={CourseSearch} />
           </Switch>
         </div>
 

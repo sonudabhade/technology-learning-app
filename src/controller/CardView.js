@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+
 import axios from "axios";
-import { makeStyles } from '@material-ui/core/styles'
+import courseservice from '../services/courseservice';
+
 import {
     Grid,
     Card,
@@ -9,14 +10,12 @@ import {
     Typography,
     CardHeader
 } from '@material-ui/core/';
-import HeroSection from '../components/HeroSection';
-import Footer from '../components/Footer';
-import authHeader from '../services/auth-header';
-import courseservice from '../services/courseservice';
 
 
 
-class CardFinal extends Component {
+
+
+class CardView extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -42,6 +41,7 @@ class CardFinal extends Component {
         // .catch((error) => {
         //     console.log(error.message)
         // })
+
         courseservice.getCourses().then((response) => {
             this.setState({ course: response.data})
         })
@@ -49,13 +49,15 @@ class CardFinal extends Component {
             console.log(error.message)
         })
 
+        
+
 
     }
 
     getFinalCourse(cid){
         console.log(cid);
         //this.props.history.push(`/viewcourse/401`);
-        this.props.history.push(`/viewcourse/${cid}`, { headers: authHeader() });
+        this.props.history.push(`/viewcourse/${cid}`);
     }
 
 
@@ -63,8 +65,8 @@ class CardFinal extends Component {
 
         return (
             <div>
-                <HeroSection/>
-            <div>
+                
+            
                 
             <Grid
             container
@@ -95,9 +97,9 @@ class CardFinal extends Component {
                                     {/* <button className="btn btn-success " >Buy</button> */}
                                     {/* <button className="btn btn-success  " onClick={() => history.push ('/Message')}>Buy</button> */}
                                     {/* <button className="btn btn-success "  > <Link className="text-white" onClick={()=>this.getFinalCourse(item.cid)}>View</Link></button> */}
-                                    {/* <div align="center">
+                                    <div align="center">
                                     <button className="btn btn-success " onClick={()=>this.getFinalCourse(item.cid)}>View</button>
-                                    </div> */}
+                                    </div>
                                 </div>
 
                             </div>
@@ -111,10 +113,8 @@ class CardFinal extends Component {
 
             </Grid>
             </div>
-            <div>
-                <Footer/>
-            </div>
-            </div>
+            
+            
             
 
 
@@ -130,4 +130,4 @@ class CardFinal extends Component {
 }
 
 
-export default CardFinal;
+export default CardView;

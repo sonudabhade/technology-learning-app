@@ -10,11 +10,11 @@ class CreateTrainee extends PureComponent {
             fname: '',
             lname: '',
             phoneno: 0,
-            qualification: '',
-            country:'',
+            qualification: 'BE',
+            country:'India',
             status:'Pending',
-            user_id:'',
-            currentUser: { id: "" }
+            id:'',
+            //currentUser: { id: "" }
 
         }
         this.changeTraineeStatusHandler = this.changeTraineeStatusHandler.bind(this);
@@ -38,7 +38,7 @@ class CreateTrainee extends PureComponent {
 
         let trainee = { fname: this.state.fname, lname: this.state.lname, phoneno: this.state.phoneno,
             qualification: this.state.qualification, country: this.state.country, status: this.state.status, 
-            user_id: this.state.user_id }
+            id: this.state.id }
 
         console.log('trainee =>' + JSON.stringify(trainee));
 
@@ -71,12 +71,12 @@ class CreateTrainee extends PureComponent {
         this.setState({ country: event.target.value });
     }
     changeTraineeUidHandler = (event) => {
-        this.setState({ user_id: event.target.value });
+        this.setState({ id: event.target.value });
     }
 
 
     render() {
-        const { currentUser } = this.state;
+        //const { currentUser } = this.state;
         return (
             <div>
                 <div className="container">
@@ -106,6 +106,20 @@ class CreateTrainee extends PureComponent {
                                             value={this.state.phoneno} onChange={this.changeTraineePhoneHandler} />
                                     </div>
                                      <div className="form-group">
+                                     <label>Qualification  &nbsp;&nbsp;&nbsp;&nbsp;
+                                            {/* <input placeholder="course fee" className="form-control" name="cname"
+                                            value={this.state.cname} onChange={this.changeCourseNameHandler} /> */}
+                                          
+                                            <select value={this.state.country} onChange={this.changeTraineeCountryHandler} style ={{width: "400px"}}>
+                                                <option value="ME">ME</option>
+                                                <option value="MSC">MSC</option>
+                                                <option value="BE">BE</option>
+                                                <option value="BA">BA</option>
+                                                <option value="SSC">SSC</option>
+                                                <option value="BSC">BSC</option>
+                                                
+                                            </select>
+                                            </label>
                                         <label>Salary</label>
                                         <input placeholder="Country" className="form-control" name="country"
                                             value={this.state.country} onChange={this.changeTraineeCountryHandler} />

@@ -2,10 +2,11 @@ import axios from'axios';
 import authHeader from './auth-header';
 const trainee_base_url="/api/getalltrainees";
 const base_url_search="/api/findtrainee";
-const base_url="http://localhost:8082/api/traineecreate";
+//const base_url="http://localhost:8082/api/traineecreate";
 //const base_url_edit="/api/test/updateuser";
 const base_url_edit_status="http://localhost:8082/api/aprovestatus";
 const base_url_delete="/api/deleteuser";
+const base_url_apply ="http://localhost:8082/api/applyForCourse";
 
 class traineeservice{
 getTrainee (){
@@ -16,7 +17,7 @@ getTrainee (){
 
 postTrainee(trainee){
     return(
-        axios.post(base_url ,trainee, { headers: authHeader() })
+        axios.post("http://localhost:8082/api/traineecreate",trainee, { headers: authHeader() })
     );
 }
 getTraineeByTid(tid){
@@ -40,6 +41,7 @@ updateTrainee(trainee,status,id){
     axios.put(`${base_url_edit_status}/${status}/${id}`,trainee, { headers: authHeader() }) 
     );
 }
+
 
 deleteTrainee(trainee, tid){
     console.log("delete trainee ")

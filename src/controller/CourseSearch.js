@@ -6,10 +6,8 @@ import {
     Link
   } from 'react-router-dom'
   import { Navbar, Nav } from 'react-bootstrap'
-// import axios from 'axios';
-// import CourseServiceControl from './CourseServiceControl';
-// const base_url="http://localhost:8082/";
-//import Card from './Card';
+
+
 
 
 class CourseSearch extends Component {
@@ -37,33 +35,19 @@ class CourseSearch extends Component {
                 {
                     this.setState({noData:true,searchData:null})
                 }
-                // const { query } = this.state;
-                // const filteredData = data.filter(item => {
-                //     return item.cname.toLowerCase().includes(query.toLowerCase());
-                //   });
+                
             })
         })
     }
 
+    getFinalCourse(cid){
+        console.log(cid);
+        //this.props.history.push(`/viewcourse/401`);
+        this.props.history.push(`/viewcourse/${cid}`);
+    }
     
 
 
-    
-    // delete(id)
-    // {
-    //     fetch('http://localhost:8082/deletecourse/'+id,
-    //     {
-    //         method: "DELETE",
-    //         // headers:{
-    //         //     'Content-Type':'application/json'
-    //         // },
-    //     }).then((result)=>{
-    //         result.json().then((resp)=>{
-    //             alert("Course has heen Deleted")
-    //             this.search(this.state.lastSearch)
-    //         })
-    //     })
-    // }
 
     render() {
         
@@ -95,7 +79,8 @@ class CourseSearch extends Component {
                                                 <td>{item.cname}</td>
                                                 <td>{item.courseDetails}</td>
                                                 {/* <td>{item.cfee}</td> */}
-                                                <td><Link to={"/coursehome/"+item.cname}><FontAwesomeIcon icon={faEye} color="orange" /> </Link>
+                                                <td><Link onClick={()=>this.getFinalCourse(item.cid)}><FontAwesomeIcon icon={faEye} color="orange" /> </Link>
+                                                
                                                 </td>
                                             </tr>
                                     )
@@ -110,8 +95,8 @@ class CourseSearch extends Component {
                         // this.state.searchData.map((item) => <Card item={item}/>)
                         // :""
                     }
-                    {    
-                        this.state.noData?<h3> <br></br>Brace Yourselves, Coming soon</h3>:null
+                    {
+                        this.state.noData?<h3>Unfortunately we do not have this course . Stay tuned, More Courses Coming soon</h3>:null
                     } 
                 </div>
 

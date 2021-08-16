@@ -12,29 +12,27 @@ class Updatecourse extends PureComponent {
             cid: this.props.match.params.cid,
             cname: 'C',
             cfee: 0,
-            courseDetails: ''
+            description: '',
+            imageURL: '',
+            videoURL: '',
+            material: ''
 
 
             
 
    
-            // jobExp: '',
-            // jobSal: '',
-            // jobLocation:'',
-            // jobNoticePeriod:'',
-            // jobSkillSet:''
+            
 
         }
         this.changeCourseNameHandler = this.changeCourseNameHandler.bind(this);
         
         this.changeCourseFeeHandler = this.changeCourseFeeHandler.bind(this);
         this.changeCourseDetailsHandler = this.changeCourseDetailsHandler.bind(this);
-        // this.changejobSalHandler =this.changejobSalHandler.bind(this);
-
-        // this.changejobLocationHandler =this.changejobLocationHandler.bind(this);
-        // this.changejobNoticePeriodHandler =this.changejobNoticePeriodHandler.bind(this);
-        // this.changejobSkillSetHandler =this.changejobSkillSetHandler.bind(this);
-
+        this.changeCourseDescriptionHandler = this.changeCourseDescriptionHandler.bind(this);
+        this.changeCourseImageHandler = this.changeCourseImageHandler.bind(this);
+        this.changeCourseVideoHandler = this.changeCourseVideoHandler.bind(this);
+        this.changeCourseMaterialHandler = this.changeCourseMaterialHandler.bind(this);
+        
 
         this.UpdateCourse = this.UpdateCourse.bind(this);
 
@@ -78,20 +76,20 @@ class Updatecourse extends PureComponent {
     changeCourseDetailsHandler = (event) => {
         this.setState({ courseDetails: event.target.value });
     }
-    // changejobSalHandler = (event) => {
-    //     this.setState({ jobSal: event.target.value });
-    // }
+    changeCourseDescriptionHandler = (event) => {
+        this.setState({ description: event.target.value });
+    }
 
-    // changejobLocationHandler = (event) => {
-    //     this.setState({ jobLocation: event.target.value });
-    // }
+    changeCourseImageHandler = (event) => {
+        this.setState({ imageURL: event.target.value });
+    }
 
-    // changejobNoticePeriodHandler = (event) => {
-    //     this.setState({ jobNoticePeriod: event.target.value });
-    // }
-    // changejobSkillSetHandler = (event) => {
-    //     this.setState({ jobSkillSet: event.target.value });
-    // }
+    changeCourseVideoHandler = (event) => {
+        this.setState({ videoURL: event.target.value });
+    }
+    changeCourseMaterialHandler = (event) => {
+        this.setState({ material: event.target.value });
+    }
 
 
 
@@ -106,28 +104,24 @@ class Updatecourse extends PureComponent {
                                 <Form>
                                     <div className="form-group">
                                     
-                                        <label>Course Name:  &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <label>Course Name:  &nbsp;&nbsp;&nbsp;&nbsp;</label>
                                             {/* <input placeholder="course fee" className="form-control" name="cname"
                                             value={this.state.cname} onChange={this.changeCourseNameHandler} /> */}
                                           
-                                            <select value={this.state.value} onChange={this.changeCourseNameHandler} style ={{width: "400px"}}>
+                                            <select value={this.state.value} onChange={this.changeCourseNameHandler} style ={{width: "500px"}}>
                                                 <option value="C">C</option>
                                                 <option value="C++">C++</option>
                                                 <option value="Java">Java</option>
                                                 <option value="Python">Python</option>
                                             </select>
-                                        </label>
+                                        
                                     </div>
 
-
-                                    <div className="form-group row" >
-                                        <div className="col-sm-2">
-                                        <label>Course Details</label>
-                                        </div>
-                                        <div className="col-sm-8" style ={{marginLeft: "-30px"}}>
-                                        <input placeholder="Course Details" className="form-control" name="courseDetails"
+                                      <br></br>
+                                    <div className="form-group">
+                                        <label>Course Details:</label>
+                                        <textarea placeholder="details" className="form-control" name="details"
                                             value={this.state.courseDetails} onChange={this.changeCourseDetailsHandler} />
-                                        </div>
                                     </div>
 
 
@@ -136,28 +130,30 @@ class Updatecourse extends PureComponent {
                                         <input placeholder="course fee" className="form-control" name="cfee"
                                             value={this.state.cfee} onChange={this.changeCourseFeeHandler} />
                                     </div>
-                                    {/* <div className="form-group">
-                                        <label>Salary</label>
-                                        <input placeholder="Job Salary" className="form-control" name="jobSal"
-                                            value={this.state.jobSal} onChange={this.changejobSalHandler} />
+                                    <div className="form-group">
+                                        <label>Description:</label>
+                                        <input placeholder="Description" className="form-control" name="Description"
+                                            value={this.state.description} onChange={this.changeCourseDescriptionHandler} />
                                     </div>
                                     <div className="form-group">
-                                        <label>Location</label>
-                                        <input placeholder="Job Location" className="form-control" name="jobLocation"
-                                            value={this.state.jobLocation} onChange={this.changejobLocationHandler} />
+                                        <label>Image URL:</label>
+                                        <input placeholder="imageURL" className="form-control" name="imageURL"
+                                            value={this.state.imageURL} onChange={this.changeCourseImageHandler} />
                                     </div>
                                     <div className="form-group">
-                                        <label>Notice Period</label>
-                                        <input placeholder="Notice Period" className="form-control" name="jobSal"
-                                            value={this.state.jobNoticePeriod} onChange={this.changejobNoticePeriodHandler} />
+                                        <label>Video URL:</label>
+                                        <input placeholder="videoURL" className="form-control" name="videoURL"
+                                            value={this.state.videoURL} onChange={this.changeCourseVideoHandler} />
                                     </div>
                                     <div className="form-group">
-                                        <label>Skills</label>
-                                        <input placeholder="Skills" className="form-control" name="jobSkillSet"
-                                            value={this.state.jobSkillSet} onChange={this.changejobSkillSetHandler} />
-                                    </div> */}
+                                        <label>Course Material:</label>
+                                        <input placeholder="courseMaterial" className="form-control" name="course Material"
+                                            value={this.state.material} onChange={this.changeCourseMaterialHandler} />
+                                    </div><br></br>
+                                    <div className="form-group" align="center">
                                     <Button  variant="contained" size="medium" color="primary" onClick={this.UpdateCourse}>Save</Button>
                                     <Button  variant="contained" size="medium" color="primary" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}>Cancel</Button>
+                                    </div>
                                 </Form>
                             </div>
                         </div>
