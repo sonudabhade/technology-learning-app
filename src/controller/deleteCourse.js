@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import courseservice from '../services/courseservice';
+import Button from '@material-ui/core/Button';
 
 
 class DeleteCourse extends PureComponent {
@@ -55,11 +56,11 @@ class DeleteCourse extends PureComponent {
                     <div className=" center card " >
               <h2 className="text-center">Are You Sure? </h2>
               <div className="card-body">
-                <h4 className="text-center" style={{margin:"3rem"}}>This process cannot be reversed</h4>
+                <h4 className="text-center" style={{margin:"2rem"}}>This process cannot be reversed</h4>
                 <form>
-                  <div className="form-group ">
-                    <button className="btn btn-danger " onClick={this.DeleteCourse}  style={{ marginLeft: "120px" }}>Confirm Delete</button>
-                    <button className="btn btn-success " onClick={this.cancel.bind(this)} style={{ marginLeft: "30px" }}>Cancel</button>
+                  <div className="form-group  " >
+                  <Button  variant="contained" size="medium" color="primary"  onClick={this.DeleteCourse}  style={{ marginLeft: "120px" }}>Confirm Delete</Button>
+                    <Button  variant="contained" size="medium" color="primary" onClick={this.cancel.bind(this)} style={{ marginLeft: "30px" }}>Cancel</Button>
                   </div>
                 </form>
               </div>

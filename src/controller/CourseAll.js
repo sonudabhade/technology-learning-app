@@ -2,7 +2,11 @@
 import React from 'react';
 import authHeader from '../services/auth-header';
 import courseservice from '../services/courseservice';
-
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 class CourseAll extends React.Component {
     
     constructor(props){
@@ -38,12 +42,19 @@ class CourseAll extends React.Component {
         
         return (
             
-                <div>
-                <h1 className = "text-center"> Course List</h1>
-                <button style={{align : "center"}}  className="btn btn-primary" onClick={this.postCourse}>Post Job</button>
+            <div>
+            <Paper variant="outlined" square />
+                <h1 className = "text-center"> <b>Course List</b></h1>
+                <br></br>
+                <br></br>
+                <center>
+                <Button  variant="contained" width="medium" color="primary" onClick={this.postCourse}>Create Course</Button>
+                <br></br>
+                <br></br>
+                </center>
                 <table className = "table table-striped">
                     <thead>
-                        <tr>
+                        <tr color="danger">
 
                             <td>Course Id</td>
                             <td>Course Name</td>
@@ -70,15 +81,20 @@ class CourseAll extends React.Component {
 
                                      <td>
 
-                                   <button className="btn btn-info" 
+                                     <Button  variant="contained" size="medium" color="primary" 
                                    onClick = {() => this.updateCourse(course.cid)}
                                    >
                                           Update 
-                                   </button>
-                                   <button style={{marginLeft: "10px"}} className="btn btn-danger"
-                                         onClick={()=>this.deletecourse(course.cid)}>
-                                        Delete 
-                                   </button>
+                                   </Button>
+
+                                   <Tooltip title="Delete">
+                                           <IconButton aria-label="delete">
+                                               <DeleteIcon  color="secondary"
+                                               onClick={()=>this.deletecourse(course.cid)}>
+                                                Delete 
+                                              </DeleteIcon>
+                                        </IconButton>
+                                   </Tooltip>
             
     
                                   </td>
@@ -88,7 +104,6 @@ class CourseAll extends React.Component {
 
                     </tbody>
                 </table>
-
             </div>
            
 

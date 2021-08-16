@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  /* background-color: aqua; */
 }
 /* 
 .App-logo {
@@ -44,14 +45,8 @@ label {
 
 .card-container.card {
   max-width: 350px !important;
-  padding: 60px 60px;
+  padding: 40px 40px;
 }
-
-.card-body{
-  max-width: 1000px !important;
-  padding: 60px 60px;
-}
-
 
 .card {
   background-color: #f7f7f7;
@@ -74,4 +69,12 @@ label {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
+}
+
+.search-row{
+  max-width: 100px;
+    background-color: aliceblue;
+    padding: 3px;
+    margin: auto;
+    margin-top:8px
 }

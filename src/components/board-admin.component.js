@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import UserService from "../services/user.service";
 import EventBus from "../common/EventBus";
 import { history } from '../index'
+import Button from '@material-ui/core/Button';
 //import AdminMain from "../controller/AdminMain";
 
 export default class BoardAdmin extends Component {
@@ -82,22 +83,23 @@ getAllTrainee(){
 
         <br/><br/>
             <div>
-                    <button style={{marginLeft: "20px", padding :"10px"}} className="btn btn-info"
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <Button  variant="contained" size="medium" color="primary" 
                                 onClick={this.getUser.bind(this)} label="Action">
                     Get Users List
-                    </button>
+                    </Button>
 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button style={{marginLeft: "10px", padding :"10px"}} className="btn btn-info"
+                    <Button  variant="contained" size="medium" color="primary" 
                                 onClick = {() => this.getCourse().bind(this)}>
                     Get Course List
-                    </button>
+                    </Button>
 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button style={{marginLeft: "10px", padding :"10px"}} className="btn btn-info"
+                    <Button  variant="contained" size="medium" color="primary" 
                                 onClick = {() => this.getAllTrainee().bind(this)}>
                     Show All Trainee
-                    </button>
+                    </Button>
                   
             </div>
       </div>

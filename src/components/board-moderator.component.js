@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import UserService from "../services/user.service";
 import EventBus from "../common/EventBus";
 import { history } from '../index'
+import Button from '@material-ui/core/Button';
 //import moderator from "../controller/moderator";
 
 export default class BoardModerator extends Component {
@@ -38,11 +39,11 @@ export default class BoardModerator extends Component {
     );
   }
 
-getUser(){
-    history.push({
-        pathname : `/admindata`,
-    })
-}
+// getUser(){
+//     history.push({
+//         pathname : `/admindata`,
+//     })
+// }
 
 getCourse(){
   history.push({
@@ -61,28 +62,30 @@ getAllTrainee(){
   render() {
     return (
       <div className="container">
-        <header className="jumbotron">
+        {/* <header className="jumbotron">
           <h3>{this.state.content}</h3>
-        </header>
+        </header> */}
 
         <br/><br/>
             <div>
-                    <button style={{marginLeft: "20px", padding :"10px"}} className="btn btn-info"
+                    {/* <button style={{marginLeft: "20px", padding :"10px"}} className="btn btn-info"
                                 onClick={this.getUser.bind(this)} label="Action">
                     Get Users List
-                    </button>
+                    </button> */}
 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button style={{marginLeft: "10px", padding :"10px"}} className="btn btn-info"
+                    <Button  variant="contained" size="medium" color="primary" 
+                    // style={{marginLeft: "10px", padding :"10px"}} className="btn btn-info"
                                 onClick = {() => this.getCourse().bind(this)}>
                     Get Course List
-                    </button>
+                    </Button>
 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button style={{marginLeft: "10px", padding :"10px"}} className="btn btn-info"
+                    <Button  variant="contained" size="medium" color="primary" 
+                    //style={{marginLeft: "10px", padding :"10px"}} className="btn btn-info"
                                 onClick = {() => this.getAllTrainee().bind(this)}>
                     Show All Trainee
-                    </button> 
+                    </Button> 
                   
             </div>
       </div>

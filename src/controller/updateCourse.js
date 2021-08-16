@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react'
 import '../App.css';
 import courseservice from '../services/courseservice';
+import Button from '@material-ui/core/Button';
+import Form from "react-validation/build/form";
 
 class Updatecourse extends PureComponent {
     constructor(props) {
@@ -57,7 +59,7 @@ class Updatecourse extends PureComponent {
         console.log('course =>' + JSON.stringify(course));
 
         courseservice.updateCourse(course, this.state.cid).then((res) => {
-            this.props.history.push("/admincourse");
+            this.props.history.push("/getallcourse");
             e.persist();
             console.log("successfully completed");
         });
@@ -65,7 +67,7 @@ class Updatecourse extends PureComponent {
 
     }
     cancel() {
-        this.props.history.push('/admincourse');
+        this.props.history.push('/getallcourse');
     }
     changeCourseNameHandler = (event) => {
         this.setState({ cname: event.target.value });
@@ -101,7 +103,7 @@ class Updatecourse extends PureComponent {
                         <div className=" center card " style ={{width: "40rem"}} >
                             <h3 className="text-center">Update Course</h3>
                             <div className="card-body">
-                                <form>
+                                <Form>
                                     <div className="form-group">
                                     
                                         <label>Course Name:  &nbsp;&nbsp;&nbsp;&nbsp;
@@ -154,9 +156,9 @@ class Updatecourse extends PureComponent {
                                         <input placeholder="Skills" className="form-control" name="jobSkillSet"
                                             value={this.state.jobSkillSet} onChange={this.changejobSkillSetHandler} />
                                     </div> */}
-                                    <button className="btn btn-success" onClick={this.UpdateCourse}>Save</button>
-                                    <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}>Cancel</button>
-                                </form>
+                                    <Button  variant="contained" size="medium" color="primary" onClick={this.UpdateCourse}>Save</Button>
+                                    <Button  variant="contained" size="medium" color="primary" onClick={this.cancel.bind(this)} style={{ marginLeft: "10px" }}>Cancel</Button>
+                                </Form>
                             </div>
                         </div>
                     </div>

@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { Switch, Route, Link } from "react-router-dom";
-import "C:/MyExes/bootstrap-4.0.0/dist/css/bootstrap.min.css";
+//import "C:/MyExes/bootstrap-4.0.0/dist/css/bootstrap.min.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import AuthService from "./services/auth.service";
 
 import Login from "./components/login.component";
 import Register from "./components/register.component";
-import Home from "./components/home.component";
+import Home from "./components/pages/Home";
 import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
@@ -23,6 +24,13 @@ import PostCourse from "./controller/postCourse";
 import TraineeAll from "./controller/TraineeAllMod";
 import UpdateTrainee from "./controller/updateTraineeMod";
 import TraineeAllAdmin from "./controller/TraineeAllAdmin";
+import DeleteTrainee from "./controller/deleteTrainee";
+import createTrainee from "./controller/createTrainee";
+import CourseCard from "./controller/CourseCard";
+import CourseHome from "./controller/CourseHome";
+import ABOUT from "./components/pages/About";
+import CONTACT from "./components/pages/Contact";
+import CardFinal from "./controller/CardFinal";
 // import userUpdate from "./controller/userUpdate";
 
 
@@ -73,7 +81,8 @@ class App extends Component {
     const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
 
     return (
-      <div>
+      
+      <div >
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <Link to={"/"} className="navbar-brand">
             UpMaster
@@ -84,6 +93,12 @@ class App extends Component {
                 Home
               </Link>
             </li>
+
+            <li className="nav-item">
+                <Link to={"/allcourses"} className="nav-link">
+                  All Courses
+                </Link>
+              </li>
 
             {showModeratorBoard && (
               <li className="nav-item">
@@ -125,6 +140,13 @@ class App extends Component {
                 </Link>
               </li>
             )}
+            {/* {currentUser && (
+              <li className="nav-item">
+                <Link to={"/usercreate"} className="nav-link">
+                  Create Profile
+                </Link>
+              </li>
+            )} */}
           </div>
 
           {currentUser ? (
@@ -159,11 +181,12 @@ class App extends Component {
 
         <div className="container mt-3">
           <Switch>
-            <Route exact path={["/", "/home"]} component={Home} />
+            <Route exact path={["/", "/home"]} component={CardFinal} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
             <Route path="/user" component={BoardUser} />
+            <Route path="/usercreate" component={createTrainee} />
             <Route path="/mod" component={BoardModerator} />
             {/* <Route path="/moddata" component={ModeratorJava} /> */}
             <Route path="/admin" component={BoardAdmin} />
@@ -174,7 +197,15 @@ class App extends Component {
             <Route path="/postcourse" component={PostCourse}></Route>
             <Route path="/updatecourse/:cid" component={Updatecourse}></Route>
             <Route path="/deletecourse/:cid" component={DeleteCourse}></Route>
+            <Route path="/deletetrainee/:tid" component={DeleteTrainee}></Route>
             <Route path="/updatetraineemod/:tid" component={UpdateTrainee} /> 
+
+            <Route path="/viewcourse/:cid" component={CourseHome} /> 
+
+            <Route exact path="/allcourses" component={CardFinal} />
+            <Route exact path="/aboutus" component={ABOUT} />
+            <Route exact path="/contact" component={CONTACT} />
+
           </Switch>
         </div>
 

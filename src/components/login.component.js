@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+//import Button from '@material-ui/core/Button';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
@@ -55,7 +56,7 @@ export default class Login extends Component {
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.login(this.state.username, this.state.password).then(
         () => {
-          this.props.history.push("/profile");
+          this.props.history.push("/home");
           window.location.reload();
         },
         error => {
@@ -118,8 +119,9 @@ export default class Login extends Component {
                 validations={[required]}
               />
             </div>
+            <br></br>
 
-            <div className="form-group">
+            <div className="form-group" align="center">
               <button
                 className="btn btn-primary btn-block"
                 disabled={this.state.loading}
@@ -131,6 +133,7 @@ export default class Login extends Component {
               </button>
             </div>
 
+            
             {this.state.message && (
               <div className="form-group">
                 <div className="alert alert-danger" role="alert">

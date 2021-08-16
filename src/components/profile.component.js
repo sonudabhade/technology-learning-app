@@ -40,7 +40,9 @@ export default class Profile extends Component {
             alt="profile-img"
             className="profile-img-card"
           />
-
+            <div className="form-group">
+              <label htmlFor="user_id">User Id: {currentUser.id}</label>
+            </div>
           
             <div className="form-group">
               <label htmlFor="username">Username: {currentUser.username}</label>

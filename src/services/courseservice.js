@@ -1,10 +1,11 @@
 import axios from'axios';
 import authHeader from './auth-header';
-const course_base_url="/api/test/getallcourses";
-const base_url_search="/api/test/coursebyid";
+const course_base_url="/api/getallcourses";
+const base_url_search="http://localhost:8082/api/coursebyid";
+const base_url_search2="/api/coursebyname/";
 //const base_url="http://localhost:8082/api/test/coursecreate";
-const base_url_edit="/api/test/updatecourse";
-const base_url_delete="/api/test/deletecourse"
+const base_url_edit="/api/updatecourse";
+const base_url_delete="/api/deletecourse"
 
 class courseservice{
 getCourses (){
@@ -13,14 +14,22 @@ getCourses (){
    );
 }
 
-postCourse(job){
+postCourse(course){
     return(
-        axios.post("http://localhost:8082/api/test/coursecreate",job, { headers: authHeader() })
+        axios.post("http://localhost:8082/api/coursecreate",course, { headers: authHeader() })
     );
+}
+
+getCourseByCname(cname){
+    return(
+        axios.get(`${base_url_search2}/${cname}`, { headers: authHeader() })
+
+       // axios.put(`${base_url_edit_status}/${status}/${user_id}`,trainee, { headers: authHeader() }) 
+    ); 
 }
 getCourseByCid(cid){
     return(
-        axios.get(base_url_search+'/'+cid , { headers: authHeader() })
+        axios.get(`${base_url_search}/${cid}` , { headers: authHeader() })
     );
 }
 
@@ -33,7 +42,7 @@ updateCourse(course,cid){
 }
 
 deleteCourse(course, cid){
-    console.log("delete job ")
+    console.log("delete course ")
     return(
         
         axios.delete(`${base_url_delete}/${cid}` , { headers: authHeader() })

@@ -3,6 +3,11 @@ import React from 'react';
 import authHeader from '../services/auth-header';
 import traineeservice from '../services/traineeservice';
 //import traineeservice from '../services/traineeservice';
+//import { makeStyles } from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 class TraineeAllAdmin extends React.Component {
     
@@ -37,7 +42,6 @@ class TraineeAllAdmin extends React.Component {
     }
    
     render (){
-        
         return (
             
                 <div>
@@ -79,10 +83,15 @@ class TraineeAllAdmin extends React.Component {
                                    >
                                           Update 
                                    </button> */}
-                                   <button style={{marginLeft: "10px"}} className="btn btn-danger"
-                                         onClick={()=>this.deleteTrainee(trainee.tid).bind}>
-                                        Delete 
-                                   </button>
+                                   <Tooltip title="Delete">
+                                           <IconButton aria-label="delete">
+                                            
+                                               <DeleteIcon  color="secondary"
+                                               onClick={()=>this.deleteTrainee(trainee.tid)}/>
+                                           
+                                            </IconButton>
+                                   </Tooltip>
+                                   
             
     
                                   </td>

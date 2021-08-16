@@ -2,6 +2,7 @@
 import React from 'react';
 import authHeader from '../services/auth-header';
 import traineeservice from '../services/traineeservice';
+import Button from '@material-ui/core/Button';
 //import traineeservice from '../services/traineeservice';
 
 class TraineeAll extends React.Component {
@@ -10,6 +11,7 @@ class TraineeAll extends React.Component {
         super(props)
         this.state = {
             trainee :[]
+            
             
         }
         // this.postCourse=this.postCourse.bind(this);
@@ -21,6 +23,8 @@ class TraineeAll extends React.Component {
        
         traineeservice.getTrainee().then((response) => {
             this.setState({ trainee: response.data})
+
+         
         });
 
     }
@@ -72,14 +76,14 @@ class TraineeAll extends React.Component {
                                      <td> {trainee.qualification}</td>   
                                      <td> {trainee.country}</td> 
                                      <td> {trainee.status}</td>   
-                                     <td> {trainee.id}</td> 
+                                     <td> {trainee.user.id}</td> 
                                      <td>
-
-                                    <button className="btn btn-info" 
+                                      
+                                     <Button  variant="contained" size="medium" color="primary"
                                    onClick = {() => this.updateTainee(trainee.tid)}
                                    >
                                           Update 
-                                   </button>
+                                   </Button>
                                    {/*<button style={{marginLeft: "10px"}} className="btn btn-danger"
                                          onClick={()=>this.deletecourse(course.cid)}>
                                         Delete 
